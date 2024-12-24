@@ -14,9 +14,9 @@ type Board struct {
 	Tile   int
 }
 
-func (b *Board) DrawTile(screen *ebiten.Image, x, y int, image *ebiten.Image) {
+func (b *Board) DrawTile(screen *ebiten.Image, tile Point, image *ebiten.Image) {
 	geom := ebiten.GeoM{}
-	geom.Translate(float64(x*b.Tile), float64(y*b.Tile))
+	geom.Translate(float64(tile.x*b.Tile), float64(tile.y*b.Tile))
 	options := &ebiten.DrawImageOptions{
 		GeoM: geom,
 	}

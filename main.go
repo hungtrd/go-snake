@@ -48,9 +48,9 @@ func (g *Game) Update() error {
 
 func (g *Game) Draw(screen *ebiten.Image) {
 	for _, dot := range g.Board.Snake.Dots {
-		g.Board.DrawTile(screen, dot.x, dot.y, goph)
+		g.Board.DrawTile(screen, dot, goph)
 	}
-	g.Board.DrawTile(screen, g.Board.Food.x, g.Board.Food.y, goph)
+	g.Board.DrawTile(screen, g.Board.Food, goph)
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {
