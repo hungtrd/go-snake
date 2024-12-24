@@ -59,7 +59,7 @@ func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeigh
 
 func main() {
 	game := &Game{
-		Speed: 200 * time.Millisecond,
+		Speed: 100 * time.Millisecond,
 		Board: Board{
 			Snake:  NewSnake(),
 			Food:   Point{3, 4},
