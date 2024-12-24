@@ -26,19 +26,20 @@ type Game struct {
 func (g *Game) Update() error {
 	time.Sleep(g.Speed)
 
-	if ebiten.IsKeyPressed(ebiten.KeyUp) {
+	if ebiten.IsKeyPressed(ebiten.KeyUp) && g.Board.Snake.Dir.y != 1 {
 		g.Board.Snake.ChangeDirection(Point{0, -1})
-	} else if ebiten.IsKeyPressed(ebiten.KeyDown) {
+	} else if ebiten.IsKeyPressed(ebiten.KeyDown) && g.Board.Snake.Dir.y != -1 {
 		g.Board.Snake.ChangeDirection(Point{0, 1})
-	} else if ebiten.IsKeyPressed(ebiten.KeyLeft) {
+	} else if ebiten.IsKeyPressed(ebiten.KeyLeft) && g.Board.Snake.Dir.x != 1 {
 		g.Board.Snake.ChangeDirection(Point{-1, 0})
-	} else if ebiten.IsKeyPressed(ebiten.KeyRight) {
+	} else if ebiten.IsKeyPressed(ebiten.KeyRight) && g.Board.Snake.Dir.x != -1 {
 		g.Board.Snake.ChangeDirection(Point{1, 0})
 	}
 
 	if g.Board.Snake.ReachFood(g.Board.Food) {
 		g.Board.Snake.Eat(g.Board.Food)
 		g.Board.PlaceFood()
+		g.Board.Snake.Move()
 	} else {
 		g.Board.Snake.Move()
 	}

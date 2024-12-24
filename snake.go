@@ -29,6 +29,19 @@ func (s *Snake) Move() {
 		head.y + s.Dir.y,
 	}
 
+	if newHead.x < 0 {
+		newHead.x = 19
+	}
+	if newHead.x > 19 {
+		newHead.x = 0
+	}
+	if newHead.y < 0 {
+		newHead.y = 19
+	}
+	if newHead.y > 19 {
+		newHead.y = 0
+	}
+
 	s.Dots = append([]Point{newHead}, s.Dots...)
 
 	s.Dots = s.Dots[:len(s.Dots)-1]
